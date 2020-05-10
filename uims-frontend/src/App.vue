@@ -1,66 +1,76 @@
 <template>
-  <div id="app" class="small-container">
-    <h1>Employees</h1>
-    <employee-form @add:employee="addEmployee" />
-    <employee-table :employees="employees" @delete:employee="deleteEmployee" @edit:employee="editEmployee"/>
-  </div>
+  <v-app>
+    <v-navigation-drawer :mini-variant.sync="mini" app>
+      <v-list-item class="px-2">
+        <v-btn icon @click.stop="mini = !mini">
+          <v-icon>mdi-menu</v-icon>
+        </v-btn>
+        <v-list-item-title class="title ml-5">UIMS</v-list-item-title>
+      </v-list-item>
+
+      <v-divider></v-divider>
+
+      <v-list shaped dense>
+        <v-list-item-group v-model="item" color="primary">
+          <v-list-item v-for="item in nav_drawer_items" :key="item.title" :color="item.color" link>
+            <v-list-item-icon>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-icon>
+
+            <v-list-item-content>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
+
+    <v-content>
+      <Uims-Table />
+    </v-content>
+  </v-app>
 </template>
 
 <script>
-import EmployeeTable from "@/components/EmployeeTable.vue";
-import EmployeeForm from "@/components/EmployeeForm.vue";
+import UimsTable from "./components/UimsTable";
 
 export default {
-  name: "app",
+  name: "App",
+
   components: {
-    EmployeeTable,
-    EmployeeForm
+    UimsTable,
   },
-  data: function() {
-    return {
-      employees: [
-        {
-          id: 1,
-          name: "Richard Hendricks",
-          email: "richard@piedpiper.com"
-        },
-        {
-          id: 2,
-          name: "Bertram Gilfoyle",
-          email: "gilfoyle@piedpiper.com"
-        },
-        {
-          id: 3,
-          name: "Dinesh Chugtai",
-          email: "dinesh@piedpiper.com"
-        }
-      ]
-    };
-  },
-  methods:{
-    addEmployee(employee){
-      let lastId = this.employees.length + 1;
-      // let newEmp = {...employee,lastId};
-      employee.id = lastId;
-      this.employees.push(employee);
+
+  data: () => ({
+    nav_drawer_items: [
+      {
+        title: "校区",
+        icon: "mdi-map",
+        color: "#0088ff"
+      },
+      {
+        title: "专业",
+        icon: "mdi-table",
+        color: "#0088ff"
+      },
+      {
+        title: "教师",
+        icon: "mdi-account",
+        color: "#0088ff"
+      },
+      {
+        title: "学生",
+        icon: "mdi-account-group",
+        color: "#0088ff"
+      }
+    ],
+    mini: false,
+  }),
+
+  computed: {
+      formTitle () {
+        return this.editedIndex === -1 ? 'New Item' : 'Edit Item'
+      },
     },
-    deleteEmployee(id){
-      this.employees =  this.employees.filter(employee => employee.id !== id);
-    },
-    editEmployee(newEmp,id){
-      this.employees = this.employees.map(employee => employee.id === id ? newEmp : employee);
-    }
-  }
 };
 </script>
-
-<style>
-button {
-  background: #009435;
-  border: 1px solid #009435;
-}
-
-.small-container {
-  max-width: 680px;
-}
-</style>
