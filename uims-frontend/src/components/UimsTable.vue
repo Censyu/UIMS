@@ -27,13 +27,22 @@
                   <v-text-field v-model="editedItem.id" :label="header.text"></v-text-field>
                 </v-col> -->
                 <v-col cols="12" sm="6" md="4">
-                  <v-text-field v-model="editedItem.id" label="ID"></v-text-field>
+                  <v-text-field
+                    v-model="editedItem.id"
+                    label="ID"
+                  ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">
-                  <v-text-field v-model="editedItem.name" label="Name"></v-text-field>
+                  <v-text-field
+                    v-model="editedItem.name"
+                    label="Name"
+                  ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">
-                  <v-text-field v-model="editedItem.gender" label="Gender"></v-text-field>
+                  <v-text-field
+                    v-model="editedItem.gender"
+                    label="Gender"
+                  ></v-text-field>
                 </v-col>
               </v-row>
             </v-container>
@@ -59,7 +68,12 @@
 
     <!-- data table -->
     <p v-if="contents.items.length === 0">There is no item.</p>
-    <v-data-table v-else :headers="contents.headers" :items="contents.items" :search="search">
+    <v-data-table
+      v-else
+      :headers="contents.headers"
+      :items="contents.items"
+      :search="search"
+    >
       <template v-slot:item.actions="{ item }">
         <v-icon small class="mr-2" @click="editItem(item)">mdi-pencil</v-icon>
         <v-icon small @click="deleteItem(item)">mdi-delete</v-icon>
