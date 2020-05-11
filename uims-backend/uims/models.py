@@ -43,7 +43,7 @@ class Major(models.Model):
     name = models.CharField(max_length=20, help_text="专业名称")
     address = models.CharField(max_length=30, help_text="专业地址")
     campus_code = models.ForeignKey(Campus, on_delete=models.PROTECT, help_text="所属校区代码")
-    director_id = models.OneToOneField('Teacher', blank=True, null=True, on_delete=models.PROTECT, help_text="专业负责人工号")
+    director_id = models.OneToOneField(Teacher, blank=True, null=True, on_delete=models.PROTECT, help_text="专业负责人工号")
 
     def __str__(self):
         return "major : %s " % self.name
