@@ -12,7 +12,12 @@
 
       <v-list shaped dense>
         <v-list-item-group v-model="item" color="primary">
-          <v-list-item v-for="item in nav_drawer_items" :key="item.title" :color="item.color" link>
+          <v-list-item
+            v-for="item in nav_drawer_items"
+            :key="item.title"
+            :color="item.color"
+            link
+          >
             <v-list-item-icon>
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-item-icon>
@@ -38,7 +43,7 @@ export default {
   name: "App",
 
   components: {
-    UimsTable,
+    UimsTable
   },
 
   data: () => ({
@@ -64,13 +69,13 @@ export default {
         color: "#0088ff"
       }
     ],
-    mini: false,
+    mini: false
   }),
 
   computed: {
-      formTitle () {
-        return this.editedIndex === -1 ? 'New Item' : 'Edit Item'
-      },
-    },
+    formTitle() {
+      return this.editedIndex === -1 ? "New Item" : "Edit Item";
+    }
+  }
 };
 </script>
