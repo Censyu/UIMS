@@ -1,16 +1,22 @@
 <template>
   <v-app>
-    <v-navigation-drawer :mini-variant.sync="mini" app>
-      <v-list-item class="px-2">
-        <v-btn icon @click.stop="mini = !mini">
-          <v-icon>mdi-menu</v-icon>
-        </v-btn>
-        <v-list-item-title class="title ml-5">UIMS</v-list-item-title>
-      </v-list-item>
+    <v-app-bar dense flat clipped-left app>
+      <v-btn
+        icon
+        @click.stop="
+          mini = drawer ? !mini : false;
+          drawer = drawer ? true : !drawer;
+        "
+      >
+        <v-icon>mdi-menu</v-icon>
+      </v-btn>
+      <v-toolbar-title style="width: 300px" class="ml-0 pl-4">
+        <span>UIMS</span>
+      </v-toolbar-title>
+    </v-app-bar>
 
-      <v-divider></v-divider>
-
-      <v-list shaped dense>
+    <v-navigation-drawer v-model="drawer" :mini-variant.sync="mini" clipped app>
+      <v-list dense>
         <v-list-item-group v-model="item">
           <router-link
             v-for="(item, i) in nav_drawer_items"
@@ -106,6 +112,7 @@ export default {
         color: "#0088ff"
       }
     ],
+    drawer: true,
     mini: false
   }),
 
