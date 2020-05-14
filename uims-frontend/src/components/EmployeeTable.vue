@@ -14,18 +14,20 @@
           <td v-if="editing === employee.id">
             <input type="text" v-model="employee.name" />
           </td>
-          <td v-else>{{employee.name}}</td>
+          <td v-else>{{ employee.name }}</td>
           <td v-if="editing === employee.id">
             <input type="text" v-model="employee.email" />
           </td>
-          <td v-else>{{employee.email}}</td>
+          <td v-else>{{ employee.email }}</td>
           <td v-if="employee.id === editing">
             <button @click="editEmployee(employee)">Save</button>
             <button @click="cancelEdit(employee)">Cancel</button>
           </td>
           <td v-else>
             <button @click="editMode(employee)">Edit</button>
-            <button @click="$emit('delete:employee',employee.id)">Delete</button>
+            <button @click="$emit('delete:employee', employee.id)">
+              Delete
+            </button>
           </td>
         </tr>
       </tbody>
@@ -47,7 +49,7 @@ export default {
   },
   methods: {
     editMode(employee) {
-      this.cachedEmployee =  Object.assign({}, employee);
+      this.cachedEmployee = Object.assign({}, employee);
       this.editing = employee.id;
     },
     editEmployee(employee) {
@@ -55,7 +57,7 @@ export default {
       this.$emit("edit:employee", employee, employee.id);
       this.editing = null;
     },
-    cancelEdit(employee){
+    cancelEdit(employee) {
       Object.assign(employee, this.cachedEmployee);
       this.editing = null;
     }

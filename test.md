@@ -16,6 +16,12 @@
 - 使用`127.0.0.1:8000`而不是`localhost:8000`获取数据，解决第一个问题
 - 安装[此插件](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf)，启用后解决第二个问题。该插件会修改获得数据的头部，为其加上`Access-Control-Allow-Origin: *`字段以使得跨域获取的数据的使用能被浏览器允许
 
+还有一种更好的解决方法：
+
+可以在命令行中启动chrome，启动一个新的浏览器环境，并关闭安全选项
+
+    google-chrome --disable-web-security --user-data-dir="your/base/dir"
+
 
 ### Axios 中处理数据
 

@@ -152,13 +152,13 @@ export default {
   },
   mounted() {
     axios
-    .get(this.url)
-    .then((response)=>{
-      this.contents.items = response.data;
-    })
-    .catch((error)=>{
-      console.log(error);
-    });
+      .get(this.url)
+      .then(response => {
+        this.contents.items = response.data;
+      })
+      .catch(error => {
+        console.log(error);
+      });
   },
   methods: {
     editItem(item) {
@@ -169,15 +169,15 @@ export default {
 
     deleteItem(item) {
       const index = this.contents.items.indexOf(item);
-      if(confirm("确定要删除该项吗?")){
+      if (confirm("确定要删除该项吗?")) {
         axios
-        .delete(this.url + item.code + "/")
-        .then(()=>{
-          this.contents.items.splice(index, 1);
-        })
-        .catch((error)=>{
-          alert("出现错误：\n" + error.message);
-        });
+          .delete(this.url + item.work_id + "/")
+          .then(() => {
+            this.contents.items.splice(index, 1);
+          })
+          .catch(error => {
+            alert("出现错误：\n" + error.message);
+          });
       }
     },
 
@@ -194,29 +194,32 @@ export default {
 
       if (this.editedIndex > -1) {
         axios
-        .put(this.url + this.contents.items[this.editedIndex].code + "/", this.editedItem)
-        .then((response)=>{
-          Object.assign(this.contents.items[index],response.data);
-        })
-        .catch((error)=>{
-          alert("出现错误：\n" + error.message);
-        });
+          .put(
+            this.url + this.contents.items[this.editedIndex].work_id + "/",
+            this.editedItem
+          )
+          .then(response => {
+            Object.assign(this.contents.items[index], response.data);
+          })
+          .catch(error => {
+            alert("出现错误：\n" + error.message);
+          });
       } else {
         axios
-        .post(this.url, this.editedItem)
-        .then((response)=>{
-          this.contents.items.push(response.data);
-        })
-        .catch((error)=>{
-          alert("出现错误：\n" + error.message);
-        });
+          .post(this.url, this.editedItem)
+          .then(response => {
+            this.contents.items.push(response.data);
+          })
+          .catch(error => {
+            alert("出现错误：\n" + error.message);
+          });
       }
       this.close();
-    },
+    }
   },
-  computed:{
-    url: function(){
-      return this.$hostname + "/api/"+ this.contents.id + "/";
+  computed: {
+    url: function() {
+      return this.$hostname + "/api/" + this.contents.id + "/";
     }
   }
 };

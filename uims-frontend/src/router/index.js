@@ -59,7 +59,7 @@ const routes = [
     path: "/course_selection",
     name: "CourseSelection",
     component: () => import("../views/CourseSelection.vue")
-  },
+  }
 ];
 
 const router = new VueRouter({

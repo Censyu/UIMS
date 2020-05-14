@@ -6,7 +6,7 @@
         ref="first"
         type="text"
         v-model="employee.name"
-        :class="{'has-error':submitting && invalidName }"
+        :class="{ 'has-error': submitting && invalidName }"
         @focus="clearStatus"
         @keypress="clearStatus"
       />
@@ -14,11 +14,13 @@
       <input
         type="text"
         v-model="employee.email"
-        :class="{'has-error':submitting && invalidEmail }"
+        :class="{ 'has-error': submitting && invalidEmail }"
         @focus="clearStatus"
         @keypress="clearStatus"
       />
-      <p class="error-message" v-if="submitting && error">Please fill out all required fields</p>
+      <p class="error-message" v-if="submitting && error">
+        Please fill out all required fields
+      </p>
       <p class="success-message" v-if="success">Employee successfully added</p>
       <button>Add Employee</button>
     </form>
