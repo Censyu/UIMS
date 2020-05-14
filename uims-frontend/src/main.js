@@ -6,6 +6,8 @@ import router from "./router";
 
 Vue.config.productionTip = false;
 
+Vue.prototype.$hostname = "http://127.0.0.1:8000"
+
 new Vue({
   vuetify,
   router,

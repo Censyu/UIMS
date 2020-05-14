@@ -39,3 +39,13 @@
         vm.data = response.data;
     });
 ```
+
+另一种解决方法为
+
+```javascript
+    axios
+    .get(url)
+    .then((response) => {
+        this.data = response.data;
+    });
+```
