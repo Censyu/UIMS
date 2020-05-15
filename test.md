@@ -11,17 +11,18 @@
 2. No 'Access-Control-Allow-Origin' header is present on the requested resource.
 ```
 
-解决方法如下
+~~解决方法如下~~
 
-- 使用`127.0.0.1:8000`而不是`localhost:8000`获取数据，解决第一个问题
-- 安装[此插件](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf)，启用后解决第二个问题。该插件会修改获得数据的头部，为其加上`Access-Control-Allow-Origin: *`字段以使得跨域获取的数据的使用能被浏览器允许
+- ~~使用`127.0.0.1:8000`而不是`localhost:8000`获取数据，解决第一个问题~~
+- ~~安装[此插件](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf)，启用后解决第二个问题。该插件会修改获得数据的头部，为其加上`Access-Control-Allow-Origin: *`字段以使得跨域获取的数据的使用能被浏览器允许~~
 
-还有一种更好的解决方法：
+~~还有一种更好的解决方法：~~
 
-可以在命令行中启动chrome，启动一个新的浏览器环境，并关闭安全选项
+~~可以在命令行中启动chrome，启动一个新的浏览器环境，并关闭安全选项~~
 
     google-chrome --disable-web-security --user-data-dir="your/base/dir"
 
+现在后端已经支持CORS，不需要再作处理了。可以在后端配置CORS支持的跨域访问白名单，目前白名单只有`localhost:8080`和`127.0.0.1:8080`。
 
 ### Axios 中处理数据
 
