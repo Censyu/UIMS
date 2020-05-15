@@ -18,7 +18,7 @@ class Person(models.Model):
     id_type = models.CharField(choices=id_type_choices.choices, max_length=10, help_text="身份证件类型")
     gender = models.CharField(choices=gender_type.choices, max_length=6, help_text="性别")
     country = models.CharField(max_length=20, help_text="国籍")
-    email =  models.CharField(max_length=20, help_text="电子邮箱")
+    email =  models.CharField(max_length=50, help_text="电子邮箱")
     home_address =  models.CharField(blank = True,null=True,max_length=20, help_text="家庭住址")
     home_zipcode =  models.CharField(blank = True,null=True, max_length=10, help_text="家庭邮政编码")
     home_phone_num =  models.CharField(blank = True,null=True, max_length=10, help_text="家庭电话")

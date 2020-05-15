@@ -16,6 +16,12 @@ class TeacherSerializer(ModelSerializer):
     class Meta:
         model = models.Teacher
         fields = "__all__"
+    
+    # 教师的身份证号在创建后不可变
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if self.instance is not None:
+            self.fields.get('id').read_only = True
 
 class MajorSerializer(ModelSerializer):
     class Meta:
@@ -31,6 +37,12 @@ class StudentSerializer(ModelSerializer):
     class Meta:
         model = models.Student
         fields = "__all__"
+    
+    # 学生的身份证号在创建后不可变
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if self.instance is not None:
+            self.fields.get('id').read_only = True
 
 class CourseSerializer(ModelSerializer):
     class Meta:
