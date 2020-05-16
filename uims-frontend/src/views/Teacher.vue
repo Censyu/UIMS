@@ -22,18 +22,51 @@
                     label="工号"
                   ></v-text-field>
                 </v-col>
-                <v-col cols="12" sm="6" md="4">
+                <!-- <v-col cols="12" sm="6" md="4">
                   <v-text-field
                     v-model="editedItem.in_date"
                     label="入职年月"
                   ></v-text-field>
-                </v-col>
-                <v-col cols="12" sm="6" md="4">
+                </v-col> -->
+                <!-- <v-col cols="12" sm="6" md="4">
                   <v-text-field
                     v-model="editedItem.title"
                     label="职称"
                   ></v-text-field>
+                </v-col> -->
+
+                <v-col cols="12" sm="6" md="4">
+                  <v-menu
+                    v-model="menu"
+                    :close-on-content-click="false"
+                    :nudge-right="40"
+                    transition="scale-transition"
+                    offset-y
+                    min-width="290px"
+                  >
+                    <template v-slot:activator="{ on }">
+                      <v-text-field
+                        v-model="editedItem.in_date"
+                        label="入职年月"
+                        readonly
+                        v-on="on"
+                      ></v-text-field>
+                    </template>
+                    <v-date-picker
+                      v-model="editedItem.in_date"
+                      type="month"
+                      @input="menu = false"
+                    ></v-date-picker>
+                  </v-menu>
                 </v-col>
+                <v-col cols="12" sm="6" md="4">
+                  <v-select
+                    v-model="editedItem.title"
+                    :items="['Professor', 'Assistant_Professor']"
+                    label="职称"
+                  ></v-select>
+                </v-col>
+
                 <v-col cols="12" sm="6" md="4">
                   <v-text-field
                     v-model="editedItem.id"
@@ -92,6 +125,7 @@ export default {
   data() {
     return {
       search: "",
+      menu: false,
       dialog: false,
       editedIndex: -1,
       editedItem: {

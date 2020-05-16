@@ -22,24 +22,63 @@
                     label="异动编号"
                   ></v-text-field>
                 </v-col>
-                <v-col cols="12" sm="6" md="4">
+                <!-- <v-col cols="12" sm="6" md="4">
                   <v-text-field
                     v-model="editedItem.date"
                     label="异动日期"
                   ></v-text-field>
-                </v-col>
-                <v-col cols="12" sm="6" md="4">
+                </v-col> -->
+                <!-- <v-col cols="12" sm="6" md="4">
                   <v-text-field
                     v-model="editedItem.downgrade_reason"
                     label="降级原因"
                   ></v-text-field>
-                </v-col>
-                <v-col cols="12" sm="6" md="4">
+                </v-col> -->
+                <!-- <v-col cols="12" sm="6" md="4">
                   <v-text-field
                     v-model="editedItem.membership_transfer"
                     label="是否转出团关系"
                   ></v-text-field>
+                </v-col> -->
+
+                <v-col cols="12" sm="6" md="4">
+                  <v-menu
+                    v-model="menu"
+                    :close-on-content-click="false"
+                    :nudge-right="40"
+                    transition="scale-transition"
+                    offset-y
+                    min-width="290px"
+                  >
+                    <template v-slot:activator="{ on }">
+                      <v-text-field
+                        v-model="editedItem.date"
+                        label="异动日期"
+                        readonly
+                        v-on="on"
+                      ></v-text-field>
+                    </template>
+                    <v-date-picker
+                      v-model="editedItem.date"
+                      @input="menu = false"
+                    ></v-date-picker>
+                  </v-menu>
                 </v-col>
+                <v-col cols="12" sm="6" md="4">
+                  <v-select
+                    v-model="editedItem.downgrade_reason"
+                    :items="['Suspend', 'Volunter_Aid_Education']"
+                    label="降级原因"
+                  ></v-select>
+                </v-col>
+                <v-col cols="12" sm="6" md="4">
+                  <v-select
+                    v-model="editedItem.membership_transfer"
+                    :items="['Yes', 'No', 'Not a Member']"
+                    label="是否转出团关系"
+                  ></v-select>
+                </v-col>
+
                 <v-col cols="12" sm="6" md="4">
                   <v-text-field
                     v-model="editedItem.student_id"
@@ -104,6 +143,7 @@ export default {
   data() {
     return {
       search: "",
+      menu: false,
       dialog: false,
       editedIndex: -1,
       editedItem: {

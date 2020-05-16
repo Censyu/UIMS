@@ -28,12 +28,21 @@
                     label="开课年份"
                   ></v-text-field>
                 </v-col>
-                <v-col cols="12" sm="6" md="4">
+                <!-- <v-col cols="12" sm="6" md="4">
                   <v-text-field
                     v-model="editedItem.semester"
                     label="开课学期"
                   ></v-text-field>
+                </v-col> -->
+
+                <v-col cols="12" sm="6" md="4">
+                  <v-select
+                    v-model="editedItem.semester"
+                    :items="['Spring', 'Autumn']"
+                    label="开课学期"
+                  ></v-select>
                 </v-col>
+
                 <v-col cols="12" sm="6" md="4">
                   <v-text-field
                     v-model="editedItem.time"

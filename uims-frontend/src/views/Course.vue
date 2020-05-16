@@ -28,12 +28,21 @@
                     label="课程名称"
                   ></v-text-field>
                 </v-col>
-                <v-col cols="12" sm="6" md="4">
+                <!-- <v-col cols="12" sm="6" md="4">
                   <v-text-field
                     v-model="editedItem.evaluation_method"
                     label="考核方式"
                   ></v-text-field>
+                </v-col> -->
+
+                <v-col cols="12" sm="6" md="4">
+                  <v-select
+                    v-model="editedItem.evaluation_method"
+                    :items="['Exam', 'In-class_Presentation']"
+                    label="考核方式"
+                  ></v-select>
                 </v-col>
+
                 <v-col cols="12" sm="6" md="4">
                   <v-text-field
                     v-model="editedItem.major_code"

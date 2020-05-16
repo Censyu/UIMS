@@ -28,24 +28,67 @@
                     label="中文名"
                   ></v-text-field>
                 </v-col>
-                <v-col cols="12" sm="6" md="4">
+                <!-- <v-col cols="12" sm="6" md="4">
                   <v-text-field
                     v-model="editedItem.birth_date"
                     label="出生日期"
                   ></v-text-field>
-                </v-col>
+                </v-col> -->
+
                 <v-col cols="12" sm="6" md="4">
+                  <v-menu
+                    v-model="menu"
+                    :close-on-content-click="false"
+                    :nudge-right="40"
+                    transition="scale-transition"
+                    offset-y
+                    min-width="290px"
+                  >
+                    <template v-slot:activator="{ on }">
+                      <v-text-field
+                        v-model="editedItem.birth_date"
+                        label="出生日期"
+                        readonly
+                        v-on="on"
+                      ></v-text-field>
+                    </template>
+                    <v-date-picker
+                      v-model="editedItem.birth_date"
+                      @input="menu = false"
+                    ></v-date-picker>
+                  </v-menu>
+                </v-col>
+
+                <!-- <v-col cols="12" sm="6" md="4">
                   <v-text-field
                     v-model="editedItem.id_type"
                     label="身份证件类型"
                   ></v-text-field>
-                </v-col>
+                </v-col> -->
+
                 <v-col cols="12" sm="6" md="4">
+                  <v-select
+                    v-model="editedItem.id_type"
+                    :items="['ID_Card', 'Passport']"
+                    label="证件类型"
+                  ></v-select>
+                </v-col>
+
+                <!-- <v-col cols="12" sm="6" md="4">
                   <v-text-field
                     v-model="editedItem.gender"
                     label="性别"
                   ></v-text-field>
+                </v-col> -->
+
+                <v-col cols="12" sm="6" md="4">
+                  <v-select
+                    v-model="editedItem.gender"
+                    :items="['Male', 'Female']"
+                    label="性别"
+                  ></v-select>
                 </v-col>
+
                 <v-col cols="12" sm="6" md="4">
                   <v-text-field
                     v-model="editedItem.country"
@@ -122,6 +165,7 @@ export default {
   data() {
     return {
       search: "",
+      menu: false,
       dialog: false,
       editedIndex: -1,
       editedItem: {
