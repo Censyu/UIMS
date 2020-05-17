@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.core.validators import MaxValueValidator,MinValueValidator
 class Campus(models.Model):
     code = models.CharField(primary_key=True, max_length=10, help_text="校区代码")
     name = models.CharField(max_length=20, help_text="校区名称")
@@ -49,16 +49,11 @@ class Major(models.Model):
         return "major : %s " % self.name
 
 class Class(models.Model):
-    GRADE_CHOICE=[
-        (1,1),
-        (2,2),
-        (3,3),
-        (4,4),
-    ]
     code = models.CharField(primary_key=True, max_length=10, help_text="班级代码")
     name = models.CharField(max_length=20, help_text="班级名称")
     start_date = models.DateField(help_text = "建班年月")
-    grade = models.IntegerField(choices=GRADE_CHOICE,help_text = "年级")
+    grade = models.IntegerField(help_text = "年级",
+                                validators=[MaxValueValidator(3000),MinValueValidator(1800)])
     major_code = models.ForeignKey(Major, on_delete=models.PROTECT,  help_text="所属专业")
     mentor_work_id = models.OneToOneField(Teacher, on_delete=models.PROTECT,  help_text="班主任工号")
 
