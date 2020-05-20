@@ -145,15 +145,7 @@ export default {
             sortable: false
           }
         ],
-        items: [
-          {
-            code: "011",
-            name: "计算机科学与技术",
-            address: "西区",
-            campus_code: "001",
-            director_id: "000001"
-          }
-        ]
+        items: []
       }
     };
   },

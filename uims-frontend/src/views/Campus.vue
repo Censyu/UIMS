@@ -120,13 +120,7 @@ export default {
             sortable: false
           }
         ],
-        items: [
-          {
-            code: "001",
-            name: "西区",
-            address: "蜀山区"
-          }
-        ]
+        items: []
       }
     };
   },
