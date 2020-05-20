@@ -20,12 +20,14 @@
                   <v-text-field
                     v-model="editedItem.code"
                     label="班级代码"
+                    :rules="[() => !!editedItem.code || '该项不能为空']"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">
                   <v-text-field
                     v-model="editedItem.name"
                     label="班级名称"
+                    :rules="[() => !!editedItem.name || '该项不能为空']"
                   ></v-text-field>
                 </v-col>
                 <!-- <v-col cols="12" sm="6" md="4">
@@ -50,41 +52,38 @@
                         label="建班年月"
                         readonly
                         v-on="on"
+                        :rules="[
+                          () => !!editedItem.start_date || '该项不能为空'
+                        ]"
                       ></v-text-field>
                     </template>
                     <v-date-picker
                       v-model="editedItem.start_date"
-                      type="month"
                       @input="menu = false"
                     ></v-date-picker>
                   </v-menu>
                 </v-col>
 
-                <!-- <v-col cols="12" sm="6" md="4">
+                <v-col cols="12" sm="6" md="4">
                   <v-text-field
                     v-model="editedItem.grade"
                     label="年级"
+                    :rules="[() => !!editedItem.grade || '该项不能为空']"
                   ></v-text-field>
-                </v-col> -->
-
-                <v-col cols="12" sm="6" md="4">
-                  <v-select
-                    v-model="editedItem.grade"
-                    :items="['1', '2', '3', '4']"
-                    label="年级"
-                  ></v-select>
                 </v-col>
 
                 <v-col cols="12" sm="6" md="4">
                   <v-text-field
                     v-model="editedItem.major_code"
                     label="所属专业"
+                    :rules="[() => !!editedItem.major_code || '该项不能为空']"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">
                   <v-text-field
                     v-model="editedItem.mentor_work_id"
                     label="班主任工号"
+                    :rules="[() => !!editedItem.mentor_work_id || '该项不能为空']"
                   ></v-text-field>
                 </v-col>
               </v-row>

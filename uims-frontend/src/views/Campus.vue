@@ -20,18 +20,22 @@
                   <v-text-field
                     v-model="editedItem.code"
                     label="校区代码"
+                    :rules="[() => !!editedItem.code || '该项不能为空']"
+                    :disabled="editedIndex > -1"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">
                   <v-text-field
                     v-model="editedItem.name"
                     label="校区名称"
+                    :rules="[() => !!editedItem.name || '该项不能为空']"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">
                   <v-text-field
                     v-model="editedItem.address"
                     label="校区地址"
+                    :rules="[() => !!editedItem.address || '该项不能为空']"
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -88,9 +92,9 @@ export default {
         address: ""
       },
       defaultItem: {
-        code: "NULL",
-        name: "NULL",
-        address: "NULL"
+        code: "",
+        name: "",
+        address: ""
       },
       contents: {
         id: "campus",
@@ -111,7 +115,7 @@ export default {
             value: "address"
           },
           {
-            text: "Actions",
+            text: "操作",
             value: "actions",
             sortable: false
           }

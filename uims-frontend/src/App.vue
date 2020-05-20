@@ -60,7 +60,7 @@ export default {
       {
         title: "专业",
         to: "/major",
-        icon: "mdi-table",
+        icon: "mdi-school",
         color: "#0088ff"
       },
       {
@@ -72,7 +72,7 @@ export default {
       {
         title: "教师",
         to: "/teacher",
-        icon: "mdi-account",
+        icon: "mdi-account-tie",
         color: "#0088ff"
       },
       {
@@ -84,31 +84,31 @@ export default {
       {
         title: "学籍异动",
         to: "/student_status_change",
-        icon: "mdi-table",
+        icon: "mdi-account-details",
         color: "#0088ff"
       },
       {
         title: "班级",
         to: "/class",
-        icon: "mdi-table",
+        icon: "mdi-google-classroom",
         color: "#0088ff"
       },
       {
         title: "课程",
         to: "/course",
-        icon: "mdi-table",
+        icon: "mdi-book-multiple",
         color: "#0088ff"
       },
       {
         title: "开课信息",
         to: "/course_info",
-        icon: "mdi-table",
+        icon: "mdi-book-open",
         color: "#0088ff"
       },
       {
         title: "学生选课",
         to: "/course_selection",
-        icon: "mdi-table",
+        icon: "mdi-book-account",
         color: "#0088ff"
       }
     ],

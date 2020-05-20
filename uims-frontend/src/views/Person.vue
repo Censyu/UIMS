@@ -20,12 +20,14 @@
                   <v-text-field
                     v-model="editedItem.id"
                     label="身份证号"
+                    :rules="[() => !!editedItem.id || '该项不能为空']"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">
                   <v-text-field
                     v-model="editedItem.chinese_name"
                     label="中文名"
+                    :rules="[() => !!editedItem.chinese_name || '该项不能为空']"
                   ></v-text-field>
                 </v-col>
                 <!-- <v-col cols="12" sm="6" md="4">
@@ -50,6 +52,9 @@
                         label="出生日期"
                         readonly
                         v-on="on"
+                        :rules="[
+                          () => !!editedItem.birth_date || '该项不能为空'
+                        ]"
                       ></v-text-field>
                     </template>
                     <v-date-picker
@@ -71,6 +76,7 @@
                     v-model="editedItem.id_type"
                     :items="['ID_Card', 'Passport']"
                     label="证件类型"
+                    :rules="[() => !!editedItem.id_type || '该项不能为空']"
                   ></v-select>
                 </v-col>
 
@@ -86,6 +92,7 @@
                     v-model="editedItem.gender"
                     :items="['Male', 'Female']"
                     label="性别"
+                    :rules="[() => !!editedItem.gender || '该项不能为空']"
                   ></v-select>
                 </v-col>
 
@@ -93,12 +100,14 @@
                   <v-text-field
                     v-model="editedItem.country"
                     label="国籍"
+                    :rules="[() => !!editedItem.country || '该项不能为空']"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">
                   <v-text-field
                     v-model="editedItem.email"
                     label="电子邮箱"
+                    :rules="[() => !!editedItem.email || '该项不能为空']"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">

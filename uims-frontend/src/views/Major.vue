@@ -20,24 +20,29 @@
                   <v-text-field
                     v-model="editedItem.code"
                     label="专业代码"
+                    :rules="[() => !!editedItem.code || '该项不能为空']"
+                    :disabled="editedIndex > -1"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">
                   <v-text-field
                     v-model="editedItem.name"
                     label="专业名称"
+                    :rules="[() => !!editedItem.name || '该项不能为空']"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">
                   <v-text-field
                     v-model="editedItem.address"
                     label="专业地址"
+                    :rules="[() => !!editedItem.address || '该项不能为空']"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">
                   <v-text-field
                     v-model="editedItem.campus_code"
                     label="校区代码"
+                    :rules="[() => !!editedItem.campus_code || '该项不能为空']"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">

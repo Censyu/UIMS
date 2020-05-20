@@ -20,6 +20,8 @@
                   <v-text-field
                     v-model="editedItem.work_id"
                     label="工号"
+                    :rules="[() => !!editedItem.work_id || '该项不能为空']"
+                    :disabled="editedIndex > -1"
                   ></v-text-field>
                 </v-col>
                 <!-- <v-col cols="12" sm="6" md="4">
@@ -50,11 +52,11 @@
                         label="入职年月"
                         readonly
                         v-on="on"
+                        :rules="[() => !!editedItem.in_date || '该项不能为空']"
                       ></v-text-field>
                     </template>
                     <v-date-picker
                       v-model="editedItem.in_date"
-                      type="month"
                       @input="menu = false"
                     ></v-date-picker>
                   </v-menu>
@@ -64,6 +66,7 @@
                     v-model="editedItem.title"
                     :items="['Professor', 'Assistant_Professor']"
                     label="职称"
+                    :rules="[() => !!editedItem.title || '该项不能为空']"
                   ></v-select>
                 </v-col>
 
@@ -71,6 +74,7 @@
                   <v-text-field
                     v-model="editedItem.id"
                     label="身份证件号"
+                    :rules="[() => !!editedItem.id || '该项不能为空']"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">
