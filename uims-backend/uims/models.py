@@ -98,9 +98,10 @@ class Course_Selection(models.Model):
 
     student_id = models.ForeignKey(Student, on_delete=models.PROTECT, help_text="选课学生学号")
     course_info_id = models.ForeignKey(Course_Info, on_delete=models.PROTECT, help_text="开课信息编号")
-    unique_together = ['student_id', 'course_info_id']
     score = models.IntegerField(blank=True, null=True, help_text = "成绩")
 
+    class Meta:
+        unique_together = ['student_id', 'course_info_id']
     def __str__(self):
         return "course selection : %s " % self.student_id
 
