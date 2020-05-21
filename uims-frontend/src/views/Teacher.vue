@@ -214,7 +214,7 @@ export default {
             this.contents.items.splice(index, 1);
           })
           .catch(error => {
-            alert("出现错误：\n" + error.message);
+            alert("出现错误：\n\n" + JSON.stringify(error.response.data));
           });
       }
     },
@@ -240,7 +240,7 @@ export default {
             Object.assign(this.contents.items[index], response.data);
           })
           .catch(error => {
-            alert("出现错误：\n" + error.message);
+            alert("出现错误：\n\n" + JSON.stringify(error.response.data));
           });
       } else {
         axios
@@ -249,7 +249,7 @@ export default {
             this.contents.items.push(response.data);
           })
           .catch(error => {
-            alert("出现错误：\n" + error.message);
+            alert("出现错误：\n\n" + JSON.stringify(error.response.data));
           });
       }
       this.close();
