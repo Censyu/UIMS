@@ -19,7 +19,7 @@
                 <v-col cols="12" sm="6" md="4">
                   <v-text-field
                     v-model="editedItem.id"
-                    label="课程编号"
+                    label="开课信息编号"
                     :disabled="editedIndex > -1"
                   ></v-text-field>
                 </v-col>
@@ -47,7 +47,7 @@
                 <v-col cols="12" sm="6" md="4">
                   <v-text-field
                     v-model="editedItem.time"
-                    label="开课时间"
+                    label="授课时间"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">

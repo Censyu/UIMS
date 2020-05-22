@@ -85,7 +85,8 @@ class Course_Info(models.Model):
     semester_type = models.TextChoices('semester_type', 'Spring Autumn')
 
     id  = models.CharField(primary_key=True, max_length=10, help_text="开课信息编号")
-    year = models.DateField(help_text = "开课日期（年）")
+    year = models.IntegerField(help_text = "开课年份",
+                                validators=[MaxValueValidator(3000),MinValueValidator(1800)])
     semester = models.CharField(choices=semester_type.choices, max_length=20, help_text="开课学期")
     time = models.CharField(max_length=20, help_text="开课时间")
     teacher_work_id = models.ForeignKey(Teacher, on_delete=models.PROTECT,help_text="开课教师工号")
